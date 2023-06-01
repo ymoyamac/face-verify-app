@@ -1,0 +1,19 @@
+{
+  "name": "face-verify-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "daisyui": "^3.0.0",
+    "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "canvas": "^2.11.2"
+  }
+}
