@@ -18,7 +18,8 @@ const users = [
 
 faceCam.addEventListener('play', async() => {
   const canvas = faceapi.createCanvasFromMedia(faceCam);
-  document.getElementById('face-cam').append(canvas);
+  const canvasDetection = document.getElementById('canvas-detection');
+  canvasDetection.insertBefore(canvas, canvasDetection.firstChild);
 
   const displaySize = {
     width: faceCam.width,
@@ -29,27 +30,15 @@ faceCam.addEventListener('play', async() => {
 
   setInterval(async () => {
     const detections = await faceapi
-      .detectAllFaces(faceCam)
-      .withFaceLandmarks()
-      .withFaceExpressions()
-      .withAgeAndGender()
-      .withFaceDescriptors();
+      .detectAllFaces(
+        faceCam,
+        new faceapi.TinyFaceDetectorOptions()
+      ).withFaceLandmarks().withFaceExpressions();
 
-    const resizedDetections = faceapi.resizeResults(detections, displaySize, true);
-
+    const resizedDetections = faceapi.resizeResults(detections, displaySize);
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-
     faceapi.draw.drawDetections(canvas, resizedDetections);
-    faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-    faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-
-    resizedDetections.forEach((detection) => {
-      const box = detection.detection.box;
-      new faceapi.draw.DrawBox(box, {
-        label: Math.round(detection.age) + ' años ' + detection.gender,
-      }).draw(canvas);
-    });
-  });
+  }, 100);
 });
 
 videoCam.addEventListener('click', async() => {

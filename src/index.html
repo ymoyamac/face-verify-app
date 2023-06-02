@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link href="/dist/output.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>
-      FaceVerify - Pase de asistencia mediante reconocimiento facial
-    </title>
+    <title>FaceVerify - Pase de asistencia mediante reconocimiento facial</title>
   </head>
   <body>
     <div class="flex flex-col gap-4 w-5/6 m-auto p-2">
@@ -20,7 +18,7 @@
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">
             <li><a>Inicio</a></li>
-            <li><a>Sobre nosotros</a></li>
+            <li><a href="about.html">Sobre nosotros</a></li>
           </ul>
         </div>
       </div>
@@ -34,7 +32,9 @@
       <div class="flex flex-row gap-2 min-h-[780px]">
         <div class="mockup-window border bg-base-300 w-full p-4 ">
           <div class="flex flex-col gap-2 items-center p-4 ">
-            <video id="face-cam" class="rounded-md" autoplay muted width="830"  height="700"></video>
+            <div id="canvas-detection">
+              <video id="face-cam" class="rounded-md" autoplay muted width="830" height="700"></video>
+            </div>
             <div class="absolute left-[50%] top-[90%]">
               <button id="btn-active-cam" class="btn btn-circle">
                 <span class="material-symbols-outlined">videocam</span>
